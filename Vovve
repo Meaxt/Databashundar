@@ -1,0 +1,36 @@
+<?php
+   define("DB_SERVER", "localhost");
+   define("DB_USER", "root");
+   define("DB_PASSWORD","");
+   define("DB_NAME","hundar");
+   
+   $dbh = new PDO('mysql:dbname='.DB_NAME.';host='.DB_SERVER.';charset=utf8',DB_USER, DB_PASSWORD);
+   
+   
+   
+   $sqlupd= "UPDATE vovvar SET namn='bolle' WHERE id=3";
+    $stmt2 = $dbh->prepare($sqlupd);
+    $stmt2->execute();
+    
+   $hund2 = $stmt2->fetchAll();
+   $sql = "SELECT * FROM vovvar";
+  
+   $stmt = $dbh->prepare($sql);
+   $stmt->execute();
+   
+  
+ 
+   $hund = $stmt->fetchAll();
+   
+   foreach ($hund as $hun){
+       echo $hun["namn"];
+       echo "<br>";
+   }
+        
+ 
+ 
+ 
+ 
+ 
+ 
+ ?>
